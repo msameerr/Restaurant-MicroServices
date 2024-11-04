@@ -51,7 +51,7 @@ namespace Mango.Web.Services
                         break;
 
                     default:
-                        message.Method = HttpMethod.Put;
+                        message.Method = HttpMethod.Get;
                         break;
                 }
 

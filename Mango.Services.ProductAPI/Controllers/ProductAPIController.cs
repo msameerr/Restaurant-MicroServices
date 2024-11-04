@@ -42,7 +42,8 @@ namespace Mango.Services.ProductAPI.Controllers
         }
 
         // GET : api/ProductAPI/1
-        [HttpGet("{id}")]
+        [HttpGet]
+        [Route("{id}")]
         public async Task<object> GetById(int ProductId)
         {
             try
@@ -109,6 +110,7 @@ namespace Mango.Services.ProductAPI.Controllers
 
         // DELETE : api/ProductAPI
         [HttpDelete]
+        [Route("{id}")]
         public async Task<object> Delete(int productId)
         {
             try

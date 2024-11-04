@@ -41,7 +41,7 @@ namespace Mango.Services.ProductAPI.Repository
         {
             try
             {
-                var Product = await _db.Products.Where(q => q.ProductId == ProductId).FirstOrDefaultAsync();
+                var Product = await _db.Products.FirstOrDefaultAsync(q => q.ProductId == ProductId);
                 if (Product == null)
                 {
                     return false;
@@ -58,11 +58,11 @@ namespace Mango.Services.ProductAPI.Repository
             
         }
 
-        public async Task<ProductDto> GetProductById(int ProductId)
+        public async Task<ProductDto> GetProductById(int productId)
         {
-            var Product = await _db.Products.Where(q => q.ProductId == ProductId).FirstOrDefaultAsync();
-            var ProductMap = _mapper.Map<ProductDto>(Product);
-            return ProductMap;
+            Product Product = await _db.Products.Where(q => q.ProductId == productId).FirstOrDefaultAsync();
+            return _mapper.Map<ProductDto>(Product);
+            
         }
 
         public async Task<IEnumerable<ProductDto>> GetProducts()
